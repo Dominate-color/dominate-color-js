@@ -1,0 +1,35 @@
+name: "🚀 npm release"
+
+on:
+    push:
+        branches:
+            - master
+
+jobs:
+    release:
+        name: 🚀 release
+        runs-on: ubuntu-latest
+        environment: npm
+        steps:
+            - name: 📚 checkout
+              uses: actions/checkout@v3
+            - name: Set up Git user
+              run: |
+                git config --global user.email "sjpdkedkdjkdkdjdmddd@gmail.com"
+                git config --global user.name "trysquaddf"
+            - name: 🟢 node
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 16
+                  registry-url: https://registry.npmjs.org
+            - name: 🚧 install dependencies
+              run: npm ci
+            - name: Update package version
+              run: npm version patch
+              working-directory: .
+            - name: 🏭 build
+              run: npm run build
+            - name: 🚀 publish
+              run: npm publish --access public
+              env:
+                  NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}
