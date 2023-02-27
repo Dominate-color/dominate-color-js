@@ -89,4 +89,4 @@ function colorDetection(
   return loader(srcOrArrayBuffer).then(callback) as Promise<Array<RGBAColor>>;
 }
 
-export { colorDetection };
+export { colorDetection, RGBAColor, RGBUnit, IntRange, Enumerate, quality };

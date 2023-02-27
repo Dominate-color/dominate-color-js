@@ -1,0 +1,33 @@
+{
+  "name": "@dominate-color-js/node",
+  "private": false,
+  "version": "1.0.4",
+  "type": "module",
+  "main": "./dist/node.cjs",
+  "module": "./dist/node.mjs",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "require": "./dist/node.cjs",
+      "import": "./dist/node.mjs"
+    }
+  },
+  "scripts": {
+    "dev": "node ./dist/node.cjs",
+    "build": "vite build --target=node14.17.0"
+  },
+  "dependencies": {
+    "@dominate-color-js/core": "workspace:*",
+    "canvas": "^2.11.0"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@types/node": "^18.11.18",
+    "@types/sharp": "^0.31.1",
+    "typescript": "^4.9.3",
+    "vite": "^4.1.0"
+  }
+}

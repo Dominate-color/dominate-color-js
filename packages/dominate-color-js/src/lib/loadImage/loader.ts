@@ -26,7 +26,6 @@ function loader(
   }
 
   return new Promise((resolve, reject) => {
-    console.log(ArrayBufferOrSrc);
     const blob = new Blob([ArrayBufferOrSrc], { type: "image/png" });
     if (blob) {
       resolve(blob);
