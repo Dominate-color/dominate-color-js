@@ -1,7 +1,7 @@
 {
   "name": "@dominate-color-js/core",
   "private": false,
-  "version": "1.0.4",
+  "version": "1.0.6",
   "main": "./dist/core.cjs",
   "module": "./dist/core.mjs",
   "types": "./dist/index.d.ts",
