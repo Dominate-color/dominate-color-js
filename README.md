@@ -8,7 +8,7 @@ yarn add @dominate-color-js/core
 ```
 
 ```sh
-pnpm @install dominate-color-js/core
+pnpm add @dominate-color-js/core
 ```
 
 ## Usage
