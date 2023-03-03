@@ -16,10 +16,10 @@ pnpm add @dominate-color-js/core
 #### [`dominate-color-js`]()
 
 ```js
-import { colorDetection , toGetColorArray } from '@dominate-color-js/core'
+import { colorDetection , toHex } from '@dominate-color-js/core'
 
 const url = 'https://i.imgur.com/zgz4G0w_d.webp?maxwidth=760&fidelity=grand'
-const colors = colorDetection(url).then(toGetColorArray('hex')) // toGetColorArray => hex || rgba || rgb || color => Array<string type HEX>
+const colors = colorDetection(url).then(toHex) // we get an array of colors in the hex color space
 ```
 
 
