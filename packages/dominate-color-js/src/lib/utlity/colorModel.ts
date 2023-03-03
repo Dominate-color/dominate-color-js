@@ -6,10 +6,23 @@ function toGetColorArray(model: colorModel = "rgba") {
   return (colors: RGBAColor[]) => {
     if (model === "hex") {
       return colors.map(color => {
-        return `#${parseInt(color[0].toString(), 10).toString(16)}${parseInt(
-          color[1].toString(),
-          10
-        ).toString(16)}${parseInt(color[2].toString(), 10).toString(16)}`;
+        return color.reduce((previousValue, currentValue, idx) => {
+          if (idx === 3) {
+            return (
+              previousValue +
+              parseInt((currentValue * 255).toString(), 10).toString(16)
+            );
+          } else {
+            if (currentValue >= 10) {
+              return (
+                previousValue +
+                parseInt(currentValue.toString(), 10).toString(16)
+              );
+            } else {
+              return previousValue + `0${currentValue}`;
+            }
+          }
+        }, "#");
       });
     } else if (model === "rgb") {
       return colors.map(color => {
