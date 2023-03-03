@@ -3,22 +3,28 @@ import {
   kMeansPPmahalanobisDistance,
   quality,
 } from "@dominate-color-js/core";
-import { getImageMatrix } from "./utlity";
 
-async function colorDominate(filePath: string, quality: quality = "fast") {
-  return getImageMatrix(filePath).then((colorData: number[][]) => {
-    if (colorData && colorData.length !== 0) {
-      switch (quality) {
-        case "fast":
-          return kMeansPPeuclideanDistance(colorData, 1);
-        case "quality":
-          return kMeansPPmahalanobisDistance(colorData, 1);
-        default:
-          return kMeansPPeuclideanDistance(colorData, 1);
-      }
+function colorDominate(colorData: number[][]): number[][];
+function colorDominate(colorData: number[][], quality?: "quality"): number[][];
+function colorDominate(
+  colorData: number[][],
+  quality?: "fast",
+  k?: number
+): number[][];
+function colorDominate(
+  colorData: number[][],
+  quality: quality = "fast",
+  k = 1
+): number[][] {
+  if (colorData && colorData.length !== 0) {
+    switch (quality) {
+      case "quality":
+        return kMeansPPmahalanobisDistance(colorData, 1);
+      default:
+        return kMeansPPeuclideanDistance(colorData, k);
     }
-    throw new Error("error: array image data empty");
-  });
+  }
+  throw new Error("error: array image data empty");
 }
 
 export { colorDominate };

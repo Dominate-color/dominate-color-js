@@ -20,8 +20,7 @@
     "build": "vite build --target=node14.17.0"
   },
   "dependencies": {
-    "@dominate-color-js/core": "workspace:*",
-    "canvas": "^2.11.0"
+    "@dominate-color-js/core": "workspace:*"
   },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.0.1",
