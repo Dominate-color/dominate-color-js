@@ -32,7 +32,7 @@ const urlRegExp = new RegExp("^(http|https)://.*$"),
  * @param distance The parameter affecting the quality of the final result is set to "fast" by default. To explicitly specify or change the quality, you can pass the string literal "fast" or "quality". Note that the speed of image processing will vary accordingly.
  * @param AccessControlAllowOrigin Access-Control-Allow-Origin is an HTTP header that specifies which origins (domains) are permitted to access resources on a server. To allow requests from any origin, you can set the header value to "*" by specifying a boolean value of true.
  */
-function colorDetection(ArrayBuffer: ArrayBuffer): Promise<RGBAColor[]> | null;
+function colorDetection(ArrayBuffer: ArrayBuffer): Promise<RGBAColor[]>;
 function colorDetection(
   ArrayBuffer: ArrayBuffer,
   distance: "quality"
@@ -41,25 +41,25 @@ function colorDetection(
   ArrayBuffer: ArrayBuffer,
   distance: "fast",
   k?: number
-): Promise<RGBAColor[]> | null;
-function colorDetection(src: string): Promise<RGBAColor[]> | null;
+): Promise<RGBAColor[]>;
+function colorDetection(src: string): Promise<RGBAColor[]>;
 function colorDetection(
   src: string,
   distance: "quality",
   AccessControlAllowOrigin?: RequestMode
-): Promise<RGBAColor[]> | null;
+): Promise<RGBAColor[]>;
 function colorDetection(
   src: string,
   distance: "fast",
   k?: number,
   AccessControlAllowOrigin?: RequestMode
-): Promise<RGBAColor[]> | null;
+): Promise<RGBAColor[]>;
 function colorDetection(
   srcOrArrayBuffer: string | ArrayBuffer,
   distance: quality = "fast",
   kOrAccessControlAllowOrigin?: number | RequestMode,
   AccessControlAllowOrigin?: RequestMode
-): Promise<RGBAColor[]> | null {
+): Promise<RGBAColor[]> {
   const quantityColor =
     typeof kOrAccessControlAllowOrigin === "number"
       ? kOrAccessControlAllowOrigin
@@ -102,8 +102,6 @@ function colorDetection(
     }
     throw new Error("error: array image data empty");
   };
-
-  console.log(srcOrArrayBuffer);
 
   if (typeof srcOrArrayBuffer === "string") {
     return loader(srcOrArrayBuffer, CORS).then(callback) as Promise<

@@ -1,4 +1,4 @@
-import { colorDetection } from "@dominate-color-js/core";
+import { colorDetection, toHex } from "@dominate-color-js/core";
 
 type error = { stack: string };
 
@@ -8,9 +8,7 @@ try {
   ctx.addEventListener("message", (event) => {
     colorDetection(event.data, "fast", 5)
       .then((colors) => {
-        const colorsString = colors.map(
-          (color) => `rgb(${color[0]},${color[1]},${color[2]})`
-        );
+        const colorsString = toHex(colors);
         const message = {
           type: "success",
           value: colorsString,

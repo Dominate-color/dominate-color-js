@@ -1,4 +1,5 @@
-import { useEffect, useRef, useState } from "react";
+import { colorDetection } from "@dominate-color-js/core";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 type BrowserType =
   | "Chrome"
@@ -51,39 +52,79 @@ const useColorDetection = () => {
   const [error, setError] = useState<null | { message: string }>(null);
   const [colors, setColors] = useState<Array<string>>([]);
   const workerRef = useRef<Worker | null>(null);
-  const borwser = useBrowser();
+  const browser = useBrowser();
 
   const reset = () => {
     setColors([]);
   };
 
-  const hanlder = async (fileImage: File | string) => {
-    isLoading(true);
+  const hanlder = useMemo(() => {
+    return browser === "MSIE" || browser === "Firefox"
+      ? async (fileImage: File | string) => {
+          isLoading(true);
+          if (fileImage instanceof File) {
+            fileImage
+              .arrayBuffer()
+              .then((arrayBuffer) => {
+                return colorDetection(arrayBuffer, "fast");
+              })
+              .then((colors) => {
+                return colors.map(
+                  (color) => `rgb(${color[0]},${color[1]},${color[2]})`
+                );
+              })
+              .then((colors) => {
+                setColors(colors);
+                isLoading(false);
+              })
+              .catch((error) => {
+                setError({ message: `${error}` });
+                isLoading(false);
+              });
+          } else {
+            colorDetection(fileImage, "fast")
+              .then((colors) => {
+                return colors.map(
+                  (color) => `rgb(${color[0]},${color[1]},${color[2]})`
+                );
+              })
+              .then((colors) => {
+                setColors(colors);
+                isLoading(false);
+              })
+              .catch((error) => {
+                setError({ message: `${error}` });
+                isLoading(false);
+              });
+          }
+        }
+      : async (fileImage: File | string) => {
+          isLoading(true);
 
-    if (workerRef.current === null) {
-      throw new Error("worker is not initialized");
-    }
+          if (workerRef.current === null) {
+            throw new Error("worker is not initialized");
+          }
 
-    if (fileImage instanceof File) {
-      fileImage
-        .arrayBuffer()
-        .then((arrayBuffer) => {
-          workerRef.current!.postMessage(arrayBuffer);
-        })
-        .catch((error) => {
-          setError({ message: `${error}` });
-          isLoading(false);
-        });
-    } else {
-      workerRef.current!.postMessage(fileImage);
-    }
-  };
+          if (fileImage instanceof File) {
+            fileImage
+              .arrayBuffer()
+              .then((arrayBuffer) => {
+                workerRef.current!.postMessage(arrayBuffer);
+              })
+              .catch((error) => {
+                setError({ message: `${error}` });
+                isLoading(false);
+              });
+          } else {
+            workerRef.current!.postMessage(fileImage);
+          }
+        };
+  }, []);
 
   useEffect(() => {
-    if (borwser === "MSIE" || borwser === "Firefox") {
+    if (browser === "MSIE" || browser === "Firefox") {
       setError({
-        message:
-          "your browser does not support the part of the technology that this script uses",
+        message: `lags freezes and starters may occur during image processing is the result of using the browser: ${browser} to solve this problem, you can change the browser`,
       });
     } else {
       const workerEvent = (event: MessageEvent<WorkerTypeColor>) => {

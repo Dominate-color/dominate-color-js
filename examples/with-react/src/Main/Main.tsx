@@ -1,5 +1,5 @@
-import { Stack, Center, Button, Flex, Text } from '@mantine/core';
-import { IconCrosshair } from '@tabler/icons-react';
+import { Stack, Center, Button, Flex, Text, Alert, Notification } from '@mantine/core';
+import { IconCrosshair, IconAlertCircle } from '@tabler/icons-react';
 import { useColorDetection } from '@dominate-color-js/react';
 import { CopyColorButton } from './components/CopyButton';
 import { DropZone } from './components/DropZone';
@@ -38,7 +38,16 @@ export function Main() {
           >
             <IconCrosshair />
           </Button>
-          {error && <Text style={{ maxWidth: '230px' }}>{error.message}</Text>}
+          {error && (
+            <Notification
+              title="Warning"
+              color="yellow"
+              disallowClose={true}
+              style={{ maxWidth: '250px' }}
+            >
+              {error.message}
+            </Notification>
+          )}
         </Stack>
       </Flex>
     </Center>
