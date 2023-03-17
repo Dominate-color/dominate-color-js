@@ -100,6 +100,7 @@ const useColorDetection = () => {
           }
         }
       : async (fileImage: File | string) => {
+          console.log("worker handler start");
           isLoading(true);
 
           if (workerRef.current === null) {
@@ -141,7 +142,7 @@ const useColorDetection = () => {
       });
       worker.addEventListener("message", workerEvent);
       workerRef.current = worker;
-      console.log(workerRef);
+      console.log(worker);
 
       return () => {
         worker.removeEventListener("message", workerEvent);

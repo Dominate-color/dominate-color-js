@@ -1,7 +1,7 @@
 {
   "name": "@dominate-color-js/react",
   "private": false,
-  "version": "1.0.8",
+  "version": "1.0.10",
   "type": "module",
   "main": "./dist/react.cjs",
   "module": "./dist/react.mjs",
