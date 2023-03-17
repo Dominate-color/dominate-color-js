@@ -59,6 +59,7 @@ const useColorDetection = () => {
   };
 
   const hanlder = useMemo(() => {
+    console.log(browser);
     return browser === "MSIE" || browser === "Firefox"
       ? async (fileImage: File | string) => {
           isLoading(true);
@@ -140,6 +141,7 @@ const useColorDetection = () => {
       });
       worker.addEventListener("message", workerEvent);
       workerRef.current = worker;
+      console.log(workerRef);
 
       return () => {
         worker.removeEventListener("message", workerEvent);

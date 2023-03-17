@@ -20,6 +20,7 @@ export function Main() {
         <Flex gap="lg">
           <Stack style={{ minWidth: '28px' }}>
             {colors.map((color) => {
+              console.log(colors);
               return <CopyColorButton value={color} key={color} />;
             })}
           </Stack>
