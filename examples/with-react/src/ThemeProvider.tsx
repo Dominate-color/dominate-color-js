@@ -1,4 +1,5 @@
 import { MantineProvider, MantineThemeOverride } from '@mantine/core';
+import { Notifications } from '@mantine/notifications';
 
 export const theme: MantineThemeOverride = {
   colorScheme: 'dark',
@@ -12,6 +13,7 @@ export function ThemeProvider({ children }: ThemeProviderProps) {
   return (
     <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}>
       {children}
+      <Notifications />
     </MantineProvider>
   );
 }

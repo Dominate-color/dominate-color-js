@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import Worker from "./worker.js?worker";
+import Worker from "./worker?worker";
 
 export type WorkerError = {
   type: "error";

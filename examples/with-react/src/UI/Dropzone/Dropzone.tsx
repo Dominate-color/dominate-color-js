@@ -1,5 +1,5 @@
-import { Group, useMantineTheme, Text } from '@mantine/core';
-import { Dropzone, DropzoneProps, IMAGE_MIME_TYPE, MIME_TYPES } from '@mantine/dropzone';
+import { Group, useMantineTheme } from '@mantine/core';
+import { Dropzone as DZ, DropzoneProps, IMAGE_MIME_TYPE, MIME_TYPES } from '@mantine/dropzone';
 import { IconPhoto, IconUpload, IconX } from '@tabler/icons-react';
 import { useEffect, useState } from 'react';
 
@@ -9,7 +9,7 @@ const DROP_ZONE_IMAGE_TYPE: typeof IMAGE_MIME_TYPE = [
   MIME_TYPES.webp,
 ];
 
-export function DropZone({
+export function Dropzone({
   state,
   ...props
 }: Partial<DropzoneProps> & {
@@ -44,7 +44,7 @@ export function DropZone({
   }, [error]);
 
   return (
-    <Dropzone
+    <DZ
       onDrop={(files) => {
         const file = files[0];
         if (file) {
@@ -60,21 +60,21 @@ export function DropZone({
       {...props}
     >
       <Group position="center" spacing="xl" style={{ minHeight: 50, pointerEvents: 'none' }}>
-        <Dropzone.Accept>
+        <DZ.Accept>
           <IconUpload
             size={50}
             stroke={1.5}
             color={theme.colors[theme.primaryColor][theme.colorScheme === 'dark' ? 4 : 6]}
           />
-        </Dropzone.Accept>
-        <Dropzone.Reject>
+        </DZ.Accept>
+        <DZ.Reject>
           <IconX
             size={50}
             stroke={1.5}
             color={theme.colors.red[theme.colorScheme === 'dark' ? 4 : 6]}
           />
-        </Dropzone.Reject>
-        <Dropzone.Idle>
+        </DZ.Reject>
+        <DZ.Idle>
           {error ? (
             <IconX
               size={50}
@@ -90,8 +90,8 @@ export function DropZone({
           ) : (
             <IconPhoto size={50} stroke={1.5} />
           )}
-        </Dropzone.Idle>
+        </DZ.Idle>
       </Group>
-    </Dropzone>
+    </DZ>
   );
 }
