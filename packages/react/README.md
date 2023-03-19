@@ -13,7 +13,7 @@ pnpm add @dominate-color-js/react
 ```
 
 > **Warning**
->  if you use do not be lazy to add optimizeDeps to site config
+>  if you use vite, do not be lazy to add optimizeDeps to vite-config
 > 
 > ```js
 >  optimizeDeps: {
@@ -21,7 +21,6 @@ pnpm add @dominate-color-js/react
 >  },
 > ```
 >  this will help to avoid incorrect operation in the vite collector in dev mode.
->    .
 
 
 [![react-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/github/Dominate-color/dominate-color-react-example)
