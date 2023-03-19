@@ -45,4 +45,12 @@ export default defineConfig({
       },
     },
   },
+  worker: {
+    rollupOptions: {
+      output: {
+        file: "dist/worker.js",
+        format: "iife",
+      },
+    },
+  },
 });
