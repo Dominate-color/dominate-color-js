@@ -1,5 +1,6 @@
-import { useEffect, useRef, useState } from "react";
+// vite: deps
 import Worker from "./worker?worker";
+import { useEffect, useRef, useState } from "react";
 
 export type WorkerError = {
   type: "error";

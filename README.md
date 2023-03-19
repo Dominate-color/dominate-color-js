@@ -39,7 +39,7 @@ yarn add @dominate-color-js/node
 pnpm add @dominate-color-js/node
 ```
 
-[![react-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/gallant-sanne-ii1e7o?file=%2Findex.js)
+[![react-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/gallant-sanne-ii1e7o)
 
 <a><img src="https://i.imgur.com/vaJk09o.png" alt="Stoyanov"></a>
 
@@ -57,4 +57,7 @@ yarn add @dominate-color-js/react
 ```sh
 pnpm add @dominate-color-js/react
 ```
+
+[![react-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/cranky-gianmarco-0nepq2)
+
 <a><img src="https://i.imgur.com/t5XP9Fo.png" alt="Stoyanov"></a>

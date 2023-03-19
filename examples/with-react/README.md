@@ -2,6 +2,6 @@
 ```sh
 git clone https://github.com/Dominate-color/dominate-color-react-example
 ```
-[![react-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/github/Dominate-color/dominate-color-react-example)
+[![react-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/cranky-gianmarco-0nepq2)
 
 <a><img src="https://i.imgur.com/t5XP9Fo.png" alt="Stoyanov"></a>
