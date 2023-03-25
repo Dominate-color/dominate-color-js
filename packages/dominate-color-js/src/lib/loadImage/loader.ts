@@ -1,5 +1,11 @@
 import { getImageMatrix } from "../utlity";
 
+/**  Loads an image and returns an array of colors.
+ * @example const image = loader(imageUrlOrArraBuffer)
+ * @param ArrayBufferOrSrc url or array buffer to the image
+ * @param AccessControlAllowOrigin CORS configurations for XHR requests
+ */
+function loader(ArrayBuffer: ArrayBuffer): Promise<number[][]>;
 function loader(
   src: string,
   AccessControlAllowOrigin?: RequestMode
