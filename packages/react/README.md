@@ -22,8 +22,9 @@ pnpm add @dominate-color-js/react
 > ```
 >  this will help to avoid incorrect operation in the vite collector in dev mode.
 
+## Usage
 
 [![react-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/github/Dominate-color/dominate-color-react-example)
 
-<a><img src="https://i.imgur.com/t5XP9Fo.png" alt="Stoyanov"></a>
+
 

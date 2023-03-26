@@ -12,6 +12,8 @@ yarn add @dominate-color-js/node
 pnpm add @dominate-color-js/node
 ```
 
+## Usage
+
 [![react-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/gallant-sanne-ii1e7o?file=%2Findex.js)
 
-<a><img src="https://i.imgur.com/vaJk09o.png" alt="Stoyanov"></a>
+
