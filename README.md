@@ -70,3 +70,16 @@ pnpm add @dominate-color-js/react
 [![react-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/cranky-gianmarco-0nepq2)
 
 
+## Installation Solid.js
+
+```sh
+npm install @dominate-color-js/solid
+```
+
+```sh
+yarn add @dominate-color-js/solid
+```
+
+```sh
+pnpm add @dominate-color-js/solid
+```

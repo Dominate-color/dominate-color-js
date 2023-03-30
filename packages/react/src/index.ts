@@ -1,6 +1,6 @@
 // vite: deps
 import Worker from "./worker?worker";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export type WorkerError = {
   type: "error";
@@ -22,11 +22,11 @@ const useColorDetection = () => {
   const [colors, setColors] = useState<Array<string>>([]);
   const workerRef = useRef<Worker | null>(null);
 
-  const reset = () => {
+  const reset = useCallback(() => {
     setColors([]);
-  };
+  }, []);
 
-  const hanlder = async (fileImage: File | string) => {
+  const hanlder = useCallback(async (fileImage: File | string) => {
     isLoading(true);
 
     if (workerRef.current === null) {
@@ -46,7 +46,7 @@ const useColorDetection = () => {
     } else {
       workerRef.current!.postMessage(fileImage);
     }
-  };
+  }, []);
 
   useEffect(() => {
     const workerEvent = (event: MessageEvent<WorkerTypeColor>) => {
@@ -57,7 +57,7 @@ const useColorDetection = () => {
       }
       isLoading(false);
     };
-    const worker = new Worker(); // TODO:fix if not create
+    const worker = new Worker();
     worker.addEventListener("message", workerEvent);
     workerRef.current = worker;
 
