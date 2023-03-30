@@ -1,7 +1,7 @@
 {
   "name": "@dominate-color-js/node",
   "private": false,
-  "version": "1.0.7",
+  "version": "1.1.2",
   "type": "module",
   "main": "./dist/node.cjs",
   "module": "./dist/node.mjs",
@@ -9,6 +9,10 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dominate-color/dominate-color-js"
+  },
   "exports": {
     ".": {
       "require": "./dist/node.cjs",

@@ -1,7 +1,7 @@
 {
   "name": "@dominate-color-js/react",
   "private": false,
-  "version": "1.1.1",
+  "version": "1.1.2",
   "type": "module",
   "main": "./dist/react.cjs",
   "module": "./dist/react.mjs",
@@ -9,6 +9,10 @@
   "files": [
     "dist"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dominate-color/dominate-color-js"
+  },
   "exports": {
     ".": {
       "require": "./dist/react.cjs",

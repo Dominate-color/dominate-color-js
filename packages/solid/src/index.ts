@@ -1,6 +1,5 @@
-// vite: deps
+import { createSignal, onMount, onCleanup } from "solid-js";
 import Worker from "./worker?worker";
-import { useEffect, useRef, useState } from "react";
 
 export type WorkerError = {
   type: "error";
@@ -16,11 +15,19 @@ export type MessageEventWorker = MessageEvent<ArrayBuffer>;
 
 export type WorkerTypeColor = WorkerError | WorkerSuccess;
 
-const useColorDetection = () => {
-  const [loading, isLoading] = useState(false);
-  const [error, setError] = useState<null | { message: string }>(null);
-  const [colors, setColors] = useState<Array<string>>([]);
-  const workerRef = useRef<Worker | null>(null);
+export const useColorDetection = () => {
+  const [loading, isLoading] = createSignal(false);
+  const [error, setError] = createSignal<null | { message: string }>(null);
+  const [colors, setColors] = createSignal<Array<string>>([]);
+  const worker = new Worker();
+  const workerEvent = (event: MessageEvent<WorkerTypeColor>) => {
+    if (event.data.type === "success") {
+      setColors(event.data.value);
+    } else if (event.data.type === "error") {
+      setError({ message: `${event.data.value}` });
+    }
+    isLoading(false);
+  };
 
   const reset = () => {
     setColors([]);
@@ -29,7 +36,7 @@ const useColorDetection = () => {
   const hanlder = async (fileImage: File | string) => {
     isLoading(true);
 
-    if (workerRef.current === null) {
+    if (worker === null) {
       throw new Error("worker is not initialized");
     }
 
@@ -37,35 +44,25 @@ const useColorDetection = () => {
       fileImage
         .arrayBuffer()
         .then((arrayBuffer) => {
-          workerRef.current!.postMessage(arrayBuffer);
+          worker.postMessage(arrayBuffer);
         })
         .catch((error) => {
           setError({ message: `${error}` });
           isLoading(false);
         });
     } else {
-      workerRef.current!.postMessage(fileImage);
+      worker.postMessage(fileImage);
     }
   };
 
-  useEffect(() => {
-    const workerEvent = (event: MessageEvent<WorkerTypeColor>) => {
-      if (event.data.type === "success") {
-        setColors(event.data.value);
-      } else if (event.data.type === "error") {
-        setError({ message: `${event.data.value}` });
-      }
-      isLoading(false);
-    };
-    const worker = new Worker(); // TODO:fix if not create
+  onMount(() => {
     worker.addEventListener("message", workerEvent);
-    workerRef.current = worker;
 
-    return () => {
+    onCleanup(() => {
       worker.removeEventListener("message", workerEvent);
       worker.terminate();
-    };
-  }, []);
+    });
+  });
 
   return {
     hanlder,
@@ -75,5 +72,3 @@ const useColorDetection = () => {
     reset,
   };
 };
-
-export { useColorDetection };

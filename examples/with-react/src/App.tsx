@@ -46,6 +46,7 @@ function App() {
               variant="light"
               color={error ? 'red' : undefined}
               onClick={() => {
+                //TODO: FIX
                 const data = file[0];
                 if (data) {
                   hanlder(data);
