@@ -7,6 +7,9 @@
   "main": "./dist/solid.cjs",
   "module": "./dist/solid.mjs",
   "types": "./dist/index.d.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "dist"
   ],
