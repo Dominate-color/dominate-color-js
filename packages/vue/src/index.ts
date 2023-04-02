@@ -61,7 +61,6 @@ const useColorDetection = () => {
     workerRef.addEventListener("message", workerEvent);
 
     onUnmounted(() => {
-      console.log("un");
       workerRef.removeEventListener("message", workerEvent);
       workerRef.terminate();
     });

@@ -1,4 +1,5 @@
 ## Installation Core
+
 ```sh
 npm install @dominate-color-js/core
 ```
@@ -12,8 +13,6 @@ pnpm add @dominate-color-js/core
 ```
 
 ## Usage 
-
-
 
 ```js
 import { colorDetection , toHex } from '@dominate-color-js/core'
@@ -42,6 +41,19 @@ pnpm add @dominate-color-js/node
 [![react-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/gallant-sanne-ii1e7o)
 
 
+## Installation Vue
+
+```sh
+npm install @dominate-color-js/vue
+```
+
+```sh
+yarn add @dominate-color-js/vue
+```
+
+```sh
+pnpm add @dominate-color-js/vue
+```
 
 ## Installation React
 
