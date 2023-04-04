@@ -1,7 +1,7 @@
 {
   "name": "@dominate-color-js/solid",
   "private": false,
-  "version": "1.1.2",
+  "version": "1.1.4",
   "description": "Adaptation of dominant-color-js for the solid-js framework",
   "type": "module",
   "main": "./dist/solid.cjs",

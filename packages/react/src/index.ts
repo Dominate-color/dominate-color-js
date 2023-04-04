@@ -1,5 +1,5 @@
 // vite: deps
-import Worker from "./worker?worker";
+import Worker from "./worker.js?worker&inline";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 export type WorkerError = {

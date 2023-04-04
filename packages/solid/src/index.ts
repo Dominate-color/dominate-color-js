@@ -1,5 +1,5 @@
 import { createSignal, onMount, onCleanup } from "solid-js";
-import Worker from "./worker?worker";
+import Worker from "./worker.js?worker&inline";
 
 export type WorkerError = {
   type: "error";

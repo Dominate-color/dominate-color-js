@@ -1,5 +1,5 @@
 import { ref, reactive, onMounted, onUnmounted } from "vue";
-import Worker from "./worker?worker";
+import Worker from "./worker.js?worker&inline";
 
 export type WorkerError = {
   type: "error";
