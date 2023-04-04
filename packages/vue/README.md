@@ -44,3 +44,5 @@ pnpm add @dominate-color-js/vue
         }
 </script>
 ```
+
+a more detailed [version](https://github.com/Dominate-color/dominate-color-js/tree/master/examples/with-vue)

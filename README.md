@@ -30,14 +30,6 @@ const colors = colorDetection(url).then(toHex)
 npm install @dominate-color-js/node
 ```
 
-```sh
-yarn add @dominate-color-js/node
-```
-
-```sh
-pnpm add @dominate-color-js/node
-```
-
 [![react-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/gallant-sanne-ii1e7o)
 
 
@@ -47,37 +39,11 @@ pnpm add @dominate-color-js/node
 npm install @dominate-color-js/vue
 ```
 
-```sh
-yarn add @dominate-color-js/vue
-```
-
-```sh
-pnpm add @dominate-color-js/vue
-```
-
 ## Installation React
 
 ```sh
 npm install @dominate-color-js/react
 ```
-
-```sh
-yarn add @dominate-color-js/react
-```
-
-```sh
-pnpm add @dominate-color-js/react
-```
-
-> **Warning**
->  if you use vite, do not be lazy to add optimizeDeps to vite-config
-> 
-> ```js
->  optimizeDeps: {
->    exclude: ["@dominate-color-js/react"],
->  },
-> ```
->  this will help to avoid incorrect operation in the vite collector in dev mode.
 
 [![react-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/cranky-gianmarco-0nepq2)
 
@@ -86,12 +52,4 @@ pnpm add @dominate-color-js/react
 
 ```sh
 npm install @dominate-color-js/solid
-```
-
-```sh
-yarn add @dominate-color-js/solid
-```
-
-```sh
-pnpm add @dominate-color-js/solid
 ```

@@ -12,19 +12,11 @@ yarn add @dominate-color-js/react
 pnpm add @dominate-color-js/react
 ```
 
-> **Warning**
->  if you use vite, do not be lazy to add optimizeDeps to vite-config
-> 
-> ```js
->  optimizeDeps: {
->    exclude: ["@dominate-color-js/react"],
->  },
-> ```
->  this will help to avoid incorrect operation in the vite collector in dev mode.
-
 ## Usage
 
-[![react-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/github/Dominate-color/dominate-color-react-example)
+[![react-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/cranky-gianmarco-0nepq2)
+
+a more detailed [version](https://github.com/Dominate-color/dominate-color-js/tree/master/examples/with-react)
 
 
 
