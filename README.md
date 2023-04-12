@@ -45,7 +45,7 @@ npm install @dominate-color-js/vue
 npm install @dominate-color-js/react
 ```
 
-https://github.com/Dominate-color/dominate-color-js/blob/master/examples/with-react/src/App.tsx#L13
+Example: https://github.com/Dominate-color/dominate-color-js/blob/master/examples/with-react/src/App.tsx#L13
 
 [![react-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/cranky-gianmarco-0nepq2)
 
