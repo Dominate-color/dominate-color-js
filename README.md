@@ -39,11 +39,14 @@ npm install @dominate-color-js/node
 npm install @dominate-color-js/vue
 ```
 
+https://github.com/Dominate-color/dominate-color-js/blob/ce5d9f792d36158348496728532a7b299d2adab6/examples/with-vue/src/App.vue#L12
+
 ## Installation React
 
 ```sh
 npm install @dominate-color-js/react
 ```
+https://github.com/Dominate-color/dominate-color-js/blob/ce5d9f792d36158348496728532a7b299d2adab6/examples/with-react/src/App.tsx#L13
 
 [![react-example](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/cranky-gianmarco-0nepq2)
 
@@ -53,3 +56,5 @@ npm install @dominate-color-js/react
 ```sh
 npm install @dominate-color-js/solid
 ```
+https://github.com/Dominate-color/dominate-color-js/blob/ce5d9f792d36158348496728532a7b299d2adab6/examples/with-solid/src/App.tsx#L43
+
