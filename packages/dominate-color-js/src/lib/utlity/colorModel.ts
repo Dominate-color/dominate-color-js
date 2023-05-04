@@ -5,24 +5,14 @@ import { RGBAColor } from "../colorDetection/colorDetection";
  * @param colors RGBA tuple of colors.
  */
 const toHex = (colors: RGBAColor[]) => {
-  return colors.map(color => {
-    return (
-      "#" +
-      color
-        .reduce((previousValue, currentValue, idx) => {
-          if (idx === 3) {
-            return [
-              ...previousValue,
-              Math.round(currentValue * 255).toString(16),
-            ];
-          } else {
-            const hexValue = currentValue.toString(16).padStart(2, "0");
-            return [...previousValue, hexValue];
-          }
-        }, [] as string[])
-        .join("")
-    );
-  });
+  return colors.map(
+    color =>
+      `#${color[0].toString(16).padStart(2, "0")}${color[1]
+        .toString(16)
+        .padStart(2, "0")}${color[2].toString(16).padStart(2, "0")}${color[3]
+        .toString(16)
+        .padStart(2, "0")}`
+  );
 };
 
 /**  Formats the output array of RGBA colors into the RGB color space as a string.

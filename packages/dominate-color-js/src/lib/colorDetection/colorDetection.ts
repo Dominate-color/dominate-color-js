@@ -27,10 +27,12 @@ const urlRegExp = new RegExp("^(http|https)://.*$"),
 
 /**  Takes the path to an image and returns an array of colors in the RGBA format.
  * @example const colors = await colorDetection(url)
+ * @param ArrayBuffer image buffer.
  * @param src Path to an image.
  * @param k The number of colors returned is limited to a maximum of one if the distance in the quality format is used(P.S the number of colors in the fast format).
  * @param distance The parameter affecting the quality of the final result is set to "fast" by default. To explicitly specify or change the quality, you can pass the string literal "fast" or "quality". Note that the speed of image processing will vary accordingly.
  * @param AccessControlAllowOrigin Access-Control-Allow-Origin is an HTTP header that specifies which origins (domains) are permitted to access resources on a server. To allow requests from any origin, you can set the header value to "*" by specifying a boolean value of true.
+ * @return RGBAColor Tuple RGBA [255,255,255,1]
  */
 function colorDetection(ArrayBuffer: ArrayBuffer): Promise<RGBAColor[]>;
 function colorDetection(
