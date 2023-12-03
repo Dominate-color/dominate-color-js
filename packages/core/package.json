@@ -52,7 +52,6 @@
     "rollup": "pnpm run typecheck && pnpm run build"
   },
   "devDependencies": {
-    "@dominate-color.js/node-polyfills": "workspace:^",
     "build-utils": "workspace:*",
     "eslint-config-custom": "workspace:*",
     "tsconfig": "workspace:*"
