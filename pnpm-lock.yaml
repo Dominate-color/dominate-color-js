@@ -126,9 +126,6 @@ importers:
 
   packages/core:
     devDependencies:
-      '@dominate-color.js/node-polyfills':
-        specifier: workspace:^
-        version: link:../node-polyfills
       build-utils:
         specifier: workspace:*
         version: link:../build-utils
