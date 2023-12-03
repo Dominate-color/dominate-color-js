@@ -1,0 +1,63 @@
+{
+  "name": "@dominate-color.js/core",
+  "version": "0.0.1",
+  "description": "A library that can extract the primary color and its hue in RGBA format and convert it.",
+  "author": "TrySquad DF <https://t.me/TrySquadDF>",
+  "homepage": "https://github.com/Dominate-color/dominate-color-js#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Dominate-color/dominate-color-js.git",
+    "directory": "packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/Dominate-color/dominate-color-js/issues"
+  },
+  "keywords": [
+    "colors",
+    "dominant color",
+    "color analysis",
+    "color palette",
+    "TypeScript",
+    "color algorithms",
+    "color detection",
+    "computer vision",
+    "image processing",
+    "color spaces"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "src"
+  ],
+  "main": "./dist/index.cjs",
+  "browser": "./dist/index.iife.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/dts/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/dts/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs",
+      "default": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "test": "vitest",
+    "lint": "eslint -c .eslintrc.cjs src/**/* tests/**/*",
+    "typecheck": "tsc --noEmit -p tsconfig.build.json",
+    "build": "pnpm run build:default",
+    "build:default": "vite build --config vite.config.ts",
+    "rollup": "pnpm run typecheck && pnpm run build"
+  },
+  "devDependencies": {
+    "@dominate-color.js/node-polyfills": "workspace:^",
+    "build-utils": "workspace:*",
+    "eslint-config-custom": "workspace:*",
+    "tsconfig": "workspace:*"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

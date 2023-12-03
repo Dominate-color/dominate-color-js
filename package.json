@@ -1,25 +1,51 @@
 {
-  "name": "dominate-color-monorep",
-  "version": "0.0.0",
-  "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
-    "build": "turbo run build",
+    "ci:packages:build": "pnpm run packages:build",
+    "ci:packages:install-deps": "pnpm i --filter {packages/*}",
+    "ci:packages:lint": "pnpm run packages:lint",
+    "ci:packages:test": "vitest --run",
+    "ci:packages:typecheck": "pnpm run packages:typecheck",
+    "commit": "git cz",
     "dev": "turbo run dev",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "packages:build": "turbo run build --filter=\"./packages/*\"",
+    "packages:lint": "turbo run lint --filter=\"./packages/*\"",
+    "packages:test": "vitest",
+    "packages:typecheck": "turbo run typecheck --filter=\"./packages/*\""
   },
   "devDependencies": {
+    "@changesets/cli": "^2.26.2",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@turbo/gen": "^1.10.16",
+    "@vitest/coverage-istanbul": "^0.34.6",
+    "@vitest/coverage-v8": "^0.34.6",
+    "@vitest/ui": "^0.34.6",
+    "canvas": "^2.11.2",
+    "commitizen": "^4.3.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.54.0",
+    "jsdom": "^22.1.0",
     "prettier": "latest",
+    "tslib": "^2.6.2",
     "turbo": "latest",
-    "typescript": "^4.9.5",
-    "vite": "^4.1.4",
-    "vite-plugin-dts": "^2.0.2"
+    "typescript": "5.1.6",
+    "vite": "^4.5.0",
+    "vite-plugin-dts": "^2.3.0",
+    "vite-plugin-solid": "^2.7.2",
+    "vite-tsconfig-paths": "^4.2.1",
+    "vitest": "1.0.0-beta.3"
   },
-  "engines": {
-    "node": ">=14.0.0"
+  "name": "monorepo",
+  "private": true,
+  "packageManager": "pnpm@8.9.2",
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   },
-  "packageManager": "pnpm@7.18.2"
+  "pnpm": {
+    "overrides": {
+      "@typescript-eslint/parser": "6.2.0"
+    }
+  }
 }
