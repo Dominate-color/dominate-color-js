@@ -19,7 +19,7 @@ describe('dotProduct', () => {
       expect(dotProduct(matrixA, matrixB)).toEqual(expectedDotProduct);
     });
 
-    it('should throw an error when the number of columns in matrix A does not match the number of rows in matrix B', () => {
+    it('should error for mismatched matrix dimensions', () => {
       const matrixA = [[1, 2, 3]];
       const matrixB = [[1, 2]];
       expect(() => dotProduct(matrixA, matrixB)).toThrow(
