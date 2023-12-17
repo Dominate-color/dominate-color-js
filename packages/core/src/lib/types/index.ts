@@ -12,6 +12,12 @@ type Quality = 'fast' | 'quality';
 type DistanceType = 'mahalanobis' | 'euclidean';
 
 /**
+ * It is a tuple of three numbers, each representing the red, green, and blue
+ * components of the color respectively.
+ */
+type RGBColor = [number, number, number];
+
+/**
  * It is a tuple of four numbers, each representing the red, green, blue,
  * and alpha (transparency) components of the color respectively.
  */
@@ -40,4 +46,4 @@ interface Config {
   AccessControlAllowOrigin?: RequestMode;
 }
 
-export type { RGBAColor, ImageSource, Config, Quality, DistanceType };
+export type { RGBAColor, RGBColor, ImageSource, Config, Quality, DistanceType };

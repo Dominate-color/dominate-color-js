@@ -7,5 +7,6 @@ module.exports = {
     ...require("./rules"),
     "react/jsx-props-no-spreading": 0,
     "react/prop-types": 0,
+    "react-hooks/exhaustive-deps": 'warn',
   },
 };

@@ -172,9 +172,6 @@ importers:
 
   packages/react:
     dependencies:
-      '@dominate-color.js/core':
-        specifier: workspace:*
-        version: link:../core
       '@types/react':
         specifier: ^17.0.0 || ^18.0.0
         version: 18.2.31
@@ -182,6 +179,9 @@ importers:
         specifier: ^17.0.0 || ^18.0.0
         version: 18.2.0
     devDependencies:
+      '@dominate-color.js/core':
+        specifier: workspace:*
+        version: link:../core
       build-utils:
         specifier: workspace:*
         version: link:../build-utils
