@@ -1,19 +1,38 @@
-import { createViteConfig, createVitestConfig } from 'build-utils';
+import { defineConfig } from 'vitest/config';
+import dts from 'vite-plugin-dts';
 
-import packageJson from './package.json';
+export default defineConfig(({ mode }) => {
+  const tsconfigPath = mode === 'test'
+    ? './tsconfig.test.json'
+    : './tsconfig.build.json';
 
-export default createViteConfig({
-  packageName: packageJson.name,
-  formats: ['es', 'cjs'],
-  external: [
-      '@dominate-color.js/math',
-  ],
-  test: createVitestConfig({
-    coverage: {
-      branches: 100,
-      functions: 100,
-      statements: 100,
-      lines: 100,
+  return {
+    plugins: [
+      dts({ outDir: 'dist/dts', tsconfigPath }),
+    ],
+    build: {
+      outDir: 'dist',
+      emptyOutDir: true,
+      sourcemap: true,
+      lib: {
+        entry: 'src/index.ts',
+        formats: ['es', 'cjs'],
+        fileName: 'index',
+      },
     },
-  }),
+    test: {
+      environment: 'happy-dom',
+      include: ['tests/**/*.ts'],
+      coverage: {
+        enabled: true,
+        provider: 'v8',
+        include: ['src/**/*.ts'],
+        exclude: ['src/**/index.ts'],
+        branches: 100,
+        functions: 100,
+        statements: 100,
+        lines: 100,
+      },
+    },
+  };
 });

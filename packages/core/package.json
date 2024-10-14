@@ -32,13 +32,12 @@
     "src"
   ],
   "main": "./dist/index.cjs",
-  "browser": "./dist/index.iife.js",
-  "module": "./dist/index.mjs",
+  "module": "./dist/index.js",
   "types": "./dist/dts/index.d.ts",
   "exports": {
     ".": {
       "types": "./dist/dts/index.d.ts",
-      "import": "./dist/index.mjs",
+      "import": "./dist/index.js",
       "require": "./dist/index.cjs",
       "default": "./dist/index.cjs"
     }
@@ -52,11 +51,13 @@
     "rollup": "pnpm run typecheck && pnpm run build"
   },
   "devDependencies": {
-    "build-utils": "workspace:*",
+    "canvas": "^2.11.2",
+    "happy-dom": "^15.7.4",
     "eslint-config-custom": "workspace:*",
     "tsconfig": "workspace:*"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "provenance": true
   }
 }
