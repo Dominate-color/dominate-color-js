@@ -1,6 +1,6 @@
 {
   "name": "@dominate-color.js/core",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A library that can extract the primary color and its hue in RGBA format and convert it.",
   "author": "TrySquad DF <https://t.me/TrySquadDF>",
   "homepage": "https://github.com/Dominate-color/dominate-color-js#readme",
