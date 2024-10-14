@@ -1,5 +1,11 @@
 # @dominate-color.js/core
 
+## 1.1.1
+
+### Patch Changes
+
+- e7093ac: Updating dependencies and removing unused dependencies.
+
 ## 1.1.0
 
 ### Minor Changes
