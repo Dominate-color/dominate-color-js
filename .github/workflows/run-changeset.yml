@@ -8,6 +8,10 @@ on:
     paths:
       - ".changeset/**.md"
 
+permissions:
+  id-token: write
+  contents: write
+
 jobs:
   run-changeset:
     name: Run changeset
