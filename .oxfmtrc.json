@@ -1,0 +1,18 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "singleQuote": true,
+  "ignorePatterns": [
+    "packages/core/src/**",
+    "**/CHANGELOG.md",
+    "**/LICENSE.md",
+    ".changeset/README.md",
+    "packages/core/README.md",
+    "docs/modernization-plan.ru.md",
+    "**/dist/**",
+    "**/coverage/**",
+    "bun.lock",
+    ".release/**",
+    "test-results/**",
+    "playwright-report/**"
+  ]
+}

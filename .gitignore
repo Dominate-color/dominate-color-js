@@ -30,8 +30,10 @@ yarn-error.log*
 .env.test.local
 .env.production.local
 
-# turbo
-.turbo
+# browser test artifacts
+test-results/
+playwright-report/
+.release/
 
 # vercel
 .vercel
@@ -41,3 +43,4 @@ yarn-error.log*
 
 # App for local development
 apps/.local
+docs

@@ -1,0 +1,24 @@
+{
+  "$schema": "./node_modules/oxlint/configuration_schema.json",
+  "categories": { "correctness": "error" },
+  "plugins": ["typescript", "oxc"],
+  "rules": { "typescript/no-floating-promises": "error" },
+  "overrides": [
+    {
+      "files": ["packages/core/src/lib/color/color-detection.ts"],
+      "rules": { "typescript/no-useless-default-assignment": "off" }
+    },
+    {
+      "files": ["packages/core/src/lib/color/color-space.ts"],
+      "rules": { "typescript/restrict-template-expressions": "off" }
+    }
+  ],
+  "ignorePatterns": [
+    "**/dist/**",
+    "**/coverage/**",
+    "**/node_modules/**",
+    "test-results/**",
+    ".release/**",
+    "playwright-report/**"
+  ]
+}
