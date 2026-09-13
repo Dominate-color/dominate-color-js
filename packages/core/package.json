@@ -2,35 +2,35 @@
   "name": "@dominate-color.js/core",
   "version": "1.1.1",
   "description": "A library that can extract the primary color and its hue in RGBA format and convert it.",
-  "author": "TrySquad DF <https://t.me/TrySquadDF>",
+  "keywords": [
+    "TypeScript",
+    "color algorithms",
+    "color analysis",
+    "color detection",
+    "color palette",
+    "color spaces",
+    "colors",
+    "computer vision",
+    "dominant color",
+    "image processing"
+  ],
   "homepage": "https://github.com/Dominate-color/dominate-color-js#readme",
+  "bugs": {
+    "url": "https://github.com/Dominate-color/dominate-color-js/issues"
+  },
+  "license": "MIT",
+  "author": "TrySquad DF <https://t.me/TrySquadDF>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Dominate-color/dominate-color-js.git",
     "directory": "packages/core"
   },
-  "bugs": {
-    "url": "https://github.com/Dominate-color/dominate-color-js/issues"
-  },
-  "keywords": [
-    "colors",
-    "dominant color",
-    "color analysis",
-    "color palette",
-    "TypeScript",
-    "color algorithms",
-    "color detection",
-    "computer vision",
-    "image processing",
-    "color spaces"
-  ],
-  "license": "MIT",
-  "type": "module",
-  "sideEffects": false,
   "files": [
     "dist",
     "src"
   ],
+  "type": "module",
+  "sideEffects": false,
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/dts/index.d.ts",
@@ -42,22 +42,22 @@
       "default": "./dist/index.cjs"
     }
   },
-  "scripts": {
-    "test": "vitest",
-    "lint": "eslint -c .eslintrc.cjs src/**/* tests/**/*",
-    "typecheck": "tsc --noEmit -p tsconfig.build.json",
-    "build": "pnpm run build:default",
-    "build:default": "vite build --config vite.config.ts",
-    "rollup": "pnpm run typecheck && pnpm run build"
-  },
-  "devDependencies": {
-    "canvas": "^2.11.2",
-    "happy-dom": "^15.7.4",
-    "eslint-config-custom": "workspace:*",
-    "tsconfig": "workspace:*"
-  },
   "publishConfig": {
     "access": "public",
     "provenance": true
+  },
+  "scripts": {
+    "test": "vitest run --config ../../vitest.config.ts --project core",
+    "lint": "oxlint --config ../../.oxlintrc.json src tests --deny-warnings",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "dev": "vite build --watch",
+    "build": "vite build && tsc -p tsconfig.declarations.json"
+  },
+  "devDependencies": {
+    "oxlint": "catalog:quality",
+    "tsconfig": "workspace:*",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "vitest": "catalog:testing"
   }
 }

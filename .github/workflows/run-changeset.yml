@@ -3,57 +3,45 @@ name: Run changeset
 on:
   workflow_dispatch:
   push:
-    branches:
-      - "master"
-    paths:
-      - ".changeset/**.md"
+    branches: [master]
+    paths: ['.changeset/**.md']
 
 permissions:
   id-token: write
   contents: write
+  pull-requests: write
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   run-changeset:
-    name: Run changeset
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
-
-      - name: Setup node
-        uses: actions/setup-node@v3
+      - uses: actions/checkout@v7.0.1
         with:
-          node-version: 20
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        id: pnpm-install
+          fetch-depth: 0
+      - uses: actions/setup-node@v7.0.0
         with:
-          version: 9
-          run_install: false
-
-      - name: Install packages dependencies only
-        run: pnpm run ci:packages:install-deps
-
-      - name: Build packages
-        run: pnpm run ci:packages:build
-
-      - name: Lint packages
-        run: pnpm run ci:packages:lint
-
-      - name: Check packages types
-        run: pnpm run ci:packages:typecheck
-
-      - name: Test packages
-        run: pnpm run ci:packages:test
-
-      - name: Run changeset
-        uses: changesets/action@v1
+          node-version-file: .node-version
+          package-manager-cache: false
+          registry-url: https://registry.npmjs.org
+      - uses: oven-sh/setup-bun@v2.2.0
         with:
-          publish: pnpm changeset publish
-          commit: 'chore(packages): version packages'
-          title: 'chore(packages): version packages'
+          bun-version-file: .bun-version
+      - run: bun install --frozen-lockfile
+      - run: bun run check
+      - run: bun run test:coverage
+      - run: bunx playwright install --with-deps chromium firefox webkit
+      - run: bun run test:browser
+      - name: Version or publish packages
+        uses: changesets/action@v2.1.2
+        with:
+          version-script: bun run version-packages
+          publish-script: bun run release
+          commit-message: 'chore(packages): version packages'
+          pr-title: 'chore(packages): version packages'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

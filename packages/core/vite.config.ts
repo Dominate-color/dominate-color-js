@@ -1,38 +1,16 @@
-import { defineConfig } from 'vitest/config';
-import dts from 'vite-plugin-dts';
+import { defineConfig } from 'vite';
 
-export default defineConfig(({ mode }) => {
-  const tsconfigPath = mode === 'test'
-    ? './tsconfig.test.json'
-    : './tsconfig.build.json';
-
-  return {
-    plugins: [
-      dts({ outDir: 'dist/dts', tsconfigPath }),
-    ],
-    build: {
-      outDir: 'dist',
-      emptyOutDir: true,
-      sourcemap: true,
-      lib: {
-        entry: 'src/index.ts',
-        formats: ['es', 'cjs'],
-        fileName: 'index',
-      },
+export default defineConfig({
+  build: {
+    // Preserve Vite 5's default browser syntax target during the tooling upgrade.
+    target: ['es2020', 'edge88', 'firefox78', 'chrome87', 'safari14'],
+    outDir: 'dist',
+    emptyOutDir: true,
+    sourcemap: true,
+    lib: {
+      entry: 'src/index.ts',
+      formats: ['es', 'cjs'],
+      fileName: (format) => (format === 'es' ? 'index.js' : 'index.cjs'),
     },
-    test: {
-      environment: 'happy-dom',
-      include: ['tests/**/*.ts'],
-      coverage: {
-        enabled: true,
-        provider: 'v8',
-        include: ['src/**/*.ts'],
-        exclude: ['src/**/index.ts'],
-        branches: 100,
-        functions: 100,
-        statements: 100,
-        lines: 100,
-      },
-    },
-  };
+  },
 });
